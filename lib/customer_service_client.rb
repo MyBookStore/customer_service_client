@@ -2,7 +2,7 @@ require 'customer_service_client/version'
 require 'customer_service_client/service_urls'
 require 'customer_service_client/service'
 require 'customer_service_client/base_service'
-require 'customer_service_client/resources/customer'
+require 'customer_service_client/resources/user'
 
 module CustomerServiceClient
   class Configuration

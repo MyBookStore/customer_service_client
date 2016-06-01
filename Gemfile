@@ -7,4 +7,5 @@ gem 'pry-byebug'
 gem 'pry'
 
 gem 'rspec-rails'
+gem 'rest-client'
 
