@@ -16,5 +16,9 @@ module CustomerServiceClient
     def email
       @user_data['email']
     end
+
+    def valid?
+      !@user_data.empty?
+    end
   end
 end

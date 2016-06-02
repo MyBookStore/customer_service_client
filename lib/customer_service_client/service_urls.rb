@@ -5,7 +5,7 @@ module CustomerServiceClient
     end
 
     def get_user_url
-      "#{users_url}/find_user"
+      "#{users_url}/user"
     end
 
     def new_user_url

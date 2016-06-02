@@ -35,10 +35,8 @@ module CustomerServiceClient
         it 'should get the customer of given email id' do
           customer_service = CustomerServiceClient::Service.new(test_user_id)
           params = {
-            session: {
-                email: 'ks@gmail.com',
-                password: '1234569'
-            }
+              email: 'ks@gmail.com',
+              password: '1234569'
           }
           customer_service.get_customer(params)
 

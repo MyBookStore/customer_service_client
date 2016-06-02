@@ -14,7 +14,7 @@ module CustomerServiceClient
 
     describe '#user_url' do
       it "should return the get a user url" do
-        expect(get_user_url(1)).to eq('localhost:7000/users/1')
+        expect(get_user_url).to eq('localhost:7000/users/user')
       end
     end
 
