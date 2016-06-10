@@ -3,7 +3,7 @@ module CustomerServiceClient
     include BaseService
     include ServiceUrls
 
-    let(:test_user_id) { 'test-user'}
+    let(:test_user_id) { 'test-user' }
     let(:dummy_customer_json) {
       {
           name: 'John',
@@ -25,22 +25,19 @@ module CustomerServiceClient
         it 'should create a customer with given params' do
           customer_service = CustomerServiceClient::Service.new(test_user_id)
 
-          customer = customer_service.new(dummy_customer_json)
+          customer = customer_service.create(dummy_customer_json)
           expect(customer.name).to eq 'John'
           expect(customer.email).to eq 'john@gmail.com'
         end
       end
+    end
 
-      describe '#get' do
-        it 'should get the customer of given email id' do
-          customer_service = CustomerServiceClient::Service.new(test_user_id)
-          params = {
-              email: 'ks@gmail.com',
-              password: '1234569'
-          }
-          customer_service.get_customer(params)
+    describe '#get' do
+      it 'should get the customer of given email id' do
+        customer_service = CustomerServiceClient::Service.new(test_user_id)
+        params = { email: 'john@gmail.com' }
+        customer_service.get(params)
 
-        end
       end
     end
   end

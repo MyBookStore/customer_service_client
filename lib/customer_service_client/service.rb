@@ -1,5 +1,6 @@
 require 'customer_service_client/base_service'
 require 'customer_service_client/service_urls'
+require 'customer_service_client/resources/user'
 
 module CustomerServiceClient
   class Service
@@ -10,14 +11,14 @@ module CustomerServiceClient
       @user = user
     end
 
-    def new params
-      customer_data = JSON.parse(execute(:post, new_user_url, params, @user))
-      User.new customer_data
+    def create params
+      customer_response = JSON.parse(execute(:post, new_user_url, params, @user))
+      Resources::User.new(customer_response)
     end
 
-    def get_customer params
+    def get params
       user_data = JSON.parse(execute(:get, get_user_url, params, @user))
-      User.new user_data
+      Resources::User.new user_data
     end
   end
 end

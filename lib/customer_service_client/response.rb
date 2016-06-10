@@ -1,12 +1,10 @@
 module CustomerServiceClient
   class Response
-    attr_accessor :code, :body
-    attr_reader :errors
+    # attr_accessor :code, :body
 
     def initialize(code, payload)
       @code = code
       @body = payload
-      @errors = errors
     end
 
     def success?
