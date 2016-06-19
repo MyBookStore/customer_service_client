@@ -20,7 +20,7 @@ module CustomerServiceClient
 
     describe '#new_user_url' do
       it "should return the new user creation url" do
-        expect(new_user_url).to eq('localhost:7000/users/new')
+        expect(create_user_url).to eq('localhost:7000/users/create')
       end
     end
 

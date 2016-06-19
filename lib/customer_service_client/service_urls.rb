@@ -8,8 +8,8 @@ module CustomerServiceClient
       "#{users_url}/user"
     end
 
-    def new_user_url
-      "#{users_url}/new"
+    def create_user_url
+      "#{users_url}/create"
     end
 
     private

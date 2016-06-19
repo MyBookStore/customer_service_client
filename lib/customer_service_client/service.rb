@@ -6,19 +6,21 @@ module CustomerServiceClient
   class Service
     include BaseService
     include ServiceUrls
+    include Resources
 
     def initialize user
       @user = user
     end
 
     def create params
-      customer_response = JSON.parse(execute(:post, new_user_url, params, @user))
-      Resources::User.new(customer_response)
+      response = execute(:post, create_user_url, params, @user)
+      customer_data = JSON.parse(response)
+      User.new customer_data
     end
 
     def get params
       user_data = JSON.parse(execute(:get, get_user_url, params, @user))
-      Resources::User.new user_data
+      User.new user_data
     end
   end
 end

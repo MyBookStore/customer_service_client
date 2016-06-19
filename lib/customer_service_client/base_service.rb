@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'customer_service_client/response'
+require 'active_support'
 
 module CustomerServiceClient
   module BaseService
@@ -14,16 +15,18 @@ module CustomerServiceClient
         user: user_id,
         payload: params,
         headers: {"Content-Type" => "application/json"}).execute
+        return response
       end
-      response
+      # payload = body.blank? ? {} : ActiveSupport::JSON.decode(body)
+      # CustomerServiceClient::Response.new(code, payload)
     end
 
 
-    def response_with(body, code)
-      payload = body.blank? ? {} : ActiveSupport::JSON.decode(body)
-      binding.pry
-      CustomerServiceClient::Response.new(code, payload)
-    end
+    # def response_with(body, code)
+    #   payload = body.blank? ? {} : ActiveSupport::JSON.decode(body)
+    #   binding.pry
+    #   CustomerServiceClient::Response.new(code, payload)
+    # end
 
   end
 end
