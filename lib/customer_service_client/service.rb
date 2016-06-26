@@ -14,13 +14,12 @@ module CustomerServiceClient
 
     def create params
       response = execute(:post, create_user_url, params, @user)
-      customer_data = JSON.parse(response)
-      User.new customer_data
+      User.new response.body['user']
     end
 
     def get params
-      user_data = JSON.parse(execute(:get, get_user_url, params, @user))
-      User.new user_data
+      response = execute(:get, get_user_url, params, @user)
+      User.new response.body['user']
     end
 
     def get_by_id id
