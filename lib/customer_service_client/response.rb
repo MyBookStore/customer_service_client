@@ -1,6 +1,6 @@
 module CustomerServiceClient
   class Response
-    # attr_accessor :code, :body
+    attr_accessor :code, :body
 
     def initialize(code, payload)
       @code = code
