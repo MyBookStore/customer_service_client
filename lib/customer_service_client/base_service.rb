@@ -14,19 +14,19 @@ module CustomerServiceClient
         url: url,
         user: user_id,
         payload: params,
-        headers: {"Content-Type" => "application/json"}).execute
-        return response
+        headers: {:content_type => :json,
+                  :accept => 'application/json'}).execute
       end
-      # payload = body.blank? ? {} : ActiveSupport::JSON.decode(body)
-      # CustomerServiceClient::Response.new(code, payload)
+      code = response.code
+      body = response.body
+
+      response_with(body, code)
     end
 
-
-    # def response_with(body, code)
-    #   payload = body.blank? ? {} : ActiveSupport::JSON.decode(body)
-    #   binding.pry
-    #   CustomerServiceClient::Response.new(code, payload)
-    # end
+    def response_with(body, code)
+      payload = body.empty? ? {} : ActiveSupport::JSON.decode(body)
+      CustomerServiceClient::Response.new(code, payload)
+    end
 
   end
 end
